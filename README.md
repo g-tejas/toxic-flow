@@ -1,6 +1,6 @@
-# 🪣 Bucketinator
+# ☣️ Toxic Flow
 
-To generate buckets for VPIN.
+Calculate everything and anything related to VPIN.
 
 ## Description
 
