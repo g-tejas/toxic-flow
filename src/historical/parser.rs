@@ -1,9 +1,11 @@
+use std::time::Instant;
 use indicatif::{ProgressState, ProgressBar, ProgressStyle};
 use csv::StringRecord;
 use std::{error::Error, fmt::Write};
 use super::Options;
 
-pub fn get_buckets(opt: &Options) -> Result<(), Box<dyn Error>> {
+pub fn run(opt: &Options) -> Result<(), Box<dyn Error>> {
+    let now = Instant::now();
     
     let date_range = opt.get_date_range();
     let mut rows: Vec<super::OutputRow> = Vec::new();
@@ -119,7 +121,6 @@ pub fn get_buckets(opt: &Options) -> Result<(), Box<dyn Error>> {
         wtr.serialize(row)?;
     }
     wtr.flush()?;
-    pb.finish_with_message("processed!");
-
+    pb.finish_with_message(format!("Processing csv took: {} seconds", now.elapsed().as_secs()));
     Ok(())
 }
