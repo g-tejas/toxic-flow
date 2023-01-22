@@ -1,0 +1,12 @@
+syntax = "proto3";
+package toxicflow;
+
+service ToxicFlow {
+    rpc OrderflowImbalance (Empty) returns (stream BucketResponse);
+}
+
+message Empty {}
+
+message BucketResponse {
+    string test = 1
+}
