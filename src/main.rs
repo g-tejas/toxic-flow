@@ -2,13 +2,12 @@
 /// For optimization, refer to documentation above, but for now it runs pretty fast.
 use clap::Parser;
 use tflow::*;
-use tflow::historical::parser::run;
 
 fn main() {
     let cli = Cli::parse();
 
      match &cli.command {
-        Commands::Historical(opts) => run(opts).expect("Failed to process csv."),
-        Commands::MonteCarlo => println!("Hello world!"),
+        Commands::Historical(opts) => historical::parser::run(opts).expect(" ❌ Failed to process csv."),
+        Commands::MonteCarlo(opts) => montecarlo::simulation::run(opts).expect("❌ Failed to run Monte Carlo simulation."),
      } 
 }

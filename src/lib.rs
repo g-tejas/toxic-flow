@@ -12,6 +12,6 @@ pub struct Cli {
 #[derive(Subcommand)]
 pub enum Commands {
     Historical(historical::Options),
-    MonteCarlo,
+    MonteCarlo(montecarlo::Options),
 }
 
