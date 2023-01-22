@@ -3,12 +3,13 @@ use indicatif::{ProgressState, ProgressBar, ProgressStyle};
 use csv::StringRecord;
 use std::{error::Error, fmt::Write};
 use super::Options;
+use crate::Bucket; 
 
 pub fn run(opt: &Options) -> Result<(), Box<dyn Error>> {
     let now = Instant::now();
     
     let date_range = opt.get_date_range();
-    let mut rows: Vec<super::OutputRow> = Vec::new();
+    let mut rows: Vec<Bucket> = Vec::new();
 
     // These parameter's must persist across all csv files so
     // put them outside all for loops
@@ -69,12 +70,12 @@ pub fn run(opt: &Options) -> Result<(), Box<dyn Error>> {
                 }
 
                 curr_bucket += 1;
-                let new_output: super::OutputRow = super::OutputRow {
+                let new_output: Bucket = Bucket {
                     bucket_no: curr_bucket,
-                    agg_buy: curr_buy_vol,
-                    agg_sell: curr_sell_vol,
                     start_time,
                     end_time: row.time,
+                    agg_buy: curr_buy_vol,
+                    agg_sell: curr_sell_vol,
                     order_imbalance: (curr_buy_vol - curr_sell_vol).abs(),
                 };
                 rows.push(new_output);
@@ -106,12 +107,12 @@ pub fn run(opt: &Options) -> Result<(), Box<dyn Error>> {
     let mut wtr = csv::Writer::from_path(opt.output_file.clone())?;
 
     curr_bucket += 1;
-    let left_over: super::OutputRow = super::OutputRow {
+    let left_over: Bucket = Bucket {
         bucket_no: curr_bucket,
-        agg_buy: curr_buy_vol,
-        agg_sell: curr_sell_vol,
         start_time,
         end_time: last_time,
+        agg_buy: curr_buy_vol,
+        agg_sell: curr_sell_vol,
         order_imbalance: (curr_buy_vol - curr_sell_vol).abs(),
     };
     rows.push(left_over);
