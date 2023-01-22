@@ -10,4 +10,5 @@ chrono = "0.4.23"
 clap = { version = "4.0.32", features = ["derive"] }
 csv = "1.1.6"
 indicatif = "0.17.2"
+rand = "0.8.5"
 serde = { version = "1.0.152", features = ["derive"] }
