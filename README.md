@@ -1,6 +1,6 @@
 # ☣️ Toxic Flow
 
-Calculate everything and anything related to VPIN.
+Calculate everything and anything related to VPIN. Publishes a merged order book as a gRPC stream.
 
 ## Description
 
