@@ -11,6 +11,7 @@ barter-data = "0.6.2"
 barter-integration = "0.5.1"
 chrono = "0.4.23"
 clap = { version = "4.0.32", features = ["derive"] }
+cli-table = "0.4.7"
 csv = "1.1.6"
 futures = "0.3.25"
 indicatif = "0.17.2"

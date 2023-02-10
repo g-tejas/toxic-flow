@@ -4,9 +4,18 @@ Calculate everything and anything related to VPIN. Publishes a merged order book
 
 ## Description
 
-An in-depth paragraph about your project and overview of use.
+A pure rust CLI websocket client for creating
+the [VPIN](https://www.stern.nyu.edu/sites/default/files/assets/documents/con_035928.pdf) measure for cryptocurrency
+markets. VPIN (Volume-synchronised
+probability of informed trading) is a way of measuring flow toxicity within a market, commonly used by liquidity
+providers as leading indicator of liquidity-induced volatility.
 
-## Getting Started
+* Live mode: Prints order_imbalance and VPIN bucket to terminal
+* Historical: Parses binance tick (trade) data using the parameters defined.
+* Monte-carlo: Runs bivariate monte-carlo simulation on probability of informed event & arrival rate of informed traders
+  for optimal bucketing.
+
+Original Paper: https://www.stern.nyu.edu/sites/default/files/assets/documents/con_035928.pdf
 
 ### Dependencies
 
@@ -49,25 +58,3 @@ Ask me
 - [Aloysius](https://github.com/pooty3)
 - Me
 - Wei Ming
-
-## Version History
-
-* 0.2
-    * Various bug fixes and optimizations
-    * See [commit change]() or See [release history]()
-* 0.1
-    * Initial Release
-
-## License
-
-This project is licensed under the [NAME HERE] License - see the LICENSE.md file for details
-
-## Acknowledgments
-
-Inspiration, code snippets, etc.
-
-* [awesome-readme](https://github.com/matiassingers/awesome-readme)
-* [PurpleBooth](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)
-* [dbader](https://github.com/dbader/readme-template)
-* [zenorocha](https://gist.github.com/zenorocha/4526327)
-* [fvcproductions](https://gist.github.com/fvcproductions/1bfc2d4aecb01a834b46)
